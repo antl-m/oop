@@ -10,7 +10,7 @@ import com.jme3.math.Vector3f;
 
 public class Interface extends SimpleApplication {
     private BulletAppState bulletAppState;
-    private MyCylinder cylinders;
+    private MyCylinderController cylinders;
     private final static String FONT = "Interface/Fonts/Default.fnt";
   
     
@@ -23,7 +23,7 @@ public class Interface extends SimpleApplication {
       cam.lookAt(new Vector3f(0, 0, -10), Vector3f.UNIT_Y);
       
       Floor floor = new Floor(assetManager, rootNode, bulletAppState);
-      cylinders = new MyCylinder(assetManager, rootNode, bulletAppState);
+      cylinders = new MyCylinderController(assetManager, rootNode, bulletAppState);
 
       inputManager.addMapping("create", 
               new MouseButtonTrigger(MouseInput.BUTTON_LEFT));
@@ -43,7 +43,7 @@ public class Interface extends SimpleApplication {
               cylinders.createCylinder(cam);
           }
           if (name.equals("move") && !keyPressed) {
-             cylinders.move(cam);
+             cylinders.move();
           }
       }
     };
